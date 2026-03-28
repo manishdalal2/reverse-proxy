@@ -1,0 +1,37 @@
+{
+  "name": "layer4-reverse-proxy",
+  "version": "0.1.0",
+  "description": "Configurable Layer 4 TCP reverse proxy with both CLI and programmatic APIs.",
+  "main": "dist/app.js",
+  "types": "dist/app.d.ts",
+  "bin": {
+    "layer4-reverse-proxy": "dist/app.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "dev": "ts-node src/app.ts",
+    "prepare": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "reverse-proxy",
+    "tcp",
+    "layer4",
+    "typescript"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.10.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devbymd/my-node-socket-app.git"
+  },
+  "author": "Manish Dalal",
+  "license": "MIT"
+}
