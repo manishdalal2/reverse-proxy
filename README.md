@@ -1,6 +1,6 @@
-# layer4-reverse-proxy
+# tcp-reverse-proxy
 
-Configurable Layer 4 TCP reverse proxy for tunneling HTTPS/TCP traffic between clients and an upstream target. Ships as both a CLI (`layer4-reverse-proxy`) and a programmatic API so you can embed it into other tooling.
+Configurable Layer 4 TCP reverse proxy for tunneling HTTPS/TCP traffic between clients and an upstream target. Ships as both a CLI (`tcp-reverse-proxy`) and a programmatic API so you can embed it into other tooling.
 
 ## Table of Contents
 
@@ -11,16 +11,16 @@ Configurable Layer 4 TCP reverse proxy for tunneling HTTPS/TCP traffic between c
 
 ## Installation
 
-1. npm install
+1. Install from npm
 
    ```bash
-   
+  npm install tcp-reverse-proxy
    ```
 
-2. Build the package
+2. Run with CLI
 
    ```bash
-   npm run build
+  npx tcp-reverse-proxy --help
    ```
 
 ## Usage
@@ -32,7 +32,7 @@ Configuration can be supplied either as CLI flags or environment variables (CLI 
 Example using only CLI flags:
 
 ```bash
-layer4-reverse-proxy \
+tcp-reverse-proxy \
   --backend-host 192.168.131.170 \
   --backend-port 5015 \
   --frontend-port 8443 \
@@ -46,7 +46,7 @@ BACKEND_HOST=192.168.131.170 \
 BACKEND_PORT=5015 \
 FRONTEND_PORT=8443 \
 RESPONSE_DELAY_MS=3000 \
-layer4-reverse-proxy
+tcp-reverse-proxy
 ```
 
 Example development runs with `ts-node`:
@@ -94,7 +94,7 @@ Available environment variables:
 ### Programmatic API
 
 ```ts
-import { startProxy } from 'layer4-reverse-proxy';
+import { startProxy } from 'tcp-reverse-proxy';
 
 const server = startProxy({
   frontendPort: 8443,
@@ -109,7 +109,7 @@ server.on('listening', () => console.log('Proxy ready!'));
 ## Project Structure
 
 ```
-layer4-reverse-proxy
+tcp-reverse-proxy
 ├── src
 │   ├── app.ts
 │   └── types
@@ -118,16 +118,6 @@ layer4-reverse-proxy
 ├── package.json
 ├── tsconfig.json
 └── README.md
-```
-
-## Publishing
-
-To publish the package to npm:
-
-```bash
-npm login
-npm run build
-npm publish --access public
 ```
 
 ## License

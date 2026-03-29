@@ -99,9 +99,9 @@ function assignOptionValue(target: Partial<ProxyConfig>, field: keyof ProxyConfi
 }
 
 function printCliHelp(): void {
-    console.log(`layer4-reverse-proxy usage:
+    console.log(`tcp-reverse-proxy usage:
 
-layer4-reverse-proxy [options]
+tcp-reverse-proxy [options]
 
 Options (CLI flags override environment variables):
   -H, --backend-host <host>       Target host/IP to forward traffic to (required)

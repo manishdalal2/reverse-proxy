@@ -1,11 +1,11 @@
 {
   "name": "tcp-reverse-proxy",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Configurable Layer 4 TCP reverse proxy with both CLI and programmatic APIs.",
   "main": "dist/app.js",
   "types": "dist/app.d.ts",
   "bin": {
-    "layer4-reverse-proxy": "dist/app.js"
+    "tcp-reverse-proxy": "dist/app.js"
   },
   "scripts": {
     "build": "tsc",
