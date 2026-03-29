@@ -38,6 +38,11 @@ chore: update docs [skip ci]
 
 This repository uses semantic-release from GitHub Actions.
 
+Node runtime requirement for release tooling:
+
+- Use Node 22 or newer for CI and local release commands.
+- semantic-release requires Node `^22.14.0 || >=24.10.0`.
+
 - CI runs on pushes to `main` and pull requests to `main`.
 - Release runs only on pushes to `main`.
 - Release is skipped for commits that start with `chore:`.
