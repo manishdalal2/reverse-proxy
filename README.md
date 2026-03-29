@@ -5,8 +5,9 @@ Configurable Layer 4 TCP reverse proxy for tunneling HTTPS/TCP traffic between c
 ## Table of Contents
 
 - [Installation](#installation)
+
 - [Usage](#usage)
-- [Project Structure](#project-structure)
+- [How Proxy Flow Works](#how-proxy-flow-works)
 - [License](#license)
 
 ## Installation
@@ -22,6 +23,7 @@ Configurable Layer 4 TCP reverse proxy for tunneling HTTPS/TCP traffic between c
    ```bash
   npx tcp-reverse-proxy --help
    ```
+
 
 ## Usage
 
@@ -106,19 +108,54 @@ const server = startProxy({
 server.on('listening', () => console.log('Proxy ready!'));
 ```
 
-## Project Structure
+## How Proxy Flow Works
 
+```mermaid
+flowchart LR
+  subgraph Before Proxy
+    C1[Client] -->|Direct TCP| B1[Backend]
+  end
 ```
-tcp-reverse-proxy
-├── src
-│   ├── app.ts
-│   └── types
-│       └── index.ts
-├── dist
-├── package.json
-├── tsconfig.json
-└── README.md
+
+```mermaid
+flowchart LR
+  subgraph After Proxy
+    C2[Client] -->|TCP In| P[tcp-reverse-proxy]
+    P -->|TCP Out| B2[Backend]
+    B2 -->|Response| P
+    P -->|Forwarded Response| C2
+  end
 ```
+
+Example setup:
+
+- Backend service: `192.168.131.170:5015`
+- Proxy listener: `0.0.0.0:8443`
+- Client now connects to: `<proxy-host>:8443`
+
+What happens:
+
+1. Client opens a socket to the proxy listener.
+2. Proxy opens a socket to the backend.
+3. Client bytes are forwarded to backend.
+4. Backend bytes are forwarded back to client.
+5. Proxy logs connection events and data flow on both directions.
+
+Example logs you can see in the proxy:
+
+```text
+[2026-03-28T21:12:01.202Z] L4 reverse proxy running on 0.0.0.0:8443, forwarding to 192.168.131.170:5015
+New connection from 10.0.0.25:60344
+Forwarding connection to 192.168.131.170:5015
+[2026-03-28T21:12:08.901Z] Data from client: GET /health HTTP/1.1
+[2026-03-28T21:12:08.908Z] Data from backend: HTTP/1.1 200 OK
+[2026-03-28T21:12:08.909Z] Data sent to client without delay: HTTP/1.1 200 OK
+[2026-03-28T21:12:08.909Z] requestCounter: 1
+[2026-03-28T21:12:09.154Z] Client disconnected
+```
+
+If you start the proxy with `--response-delay 2000`, you will see `Data sent to client after 2000ms delay: ...` in logs.
+
 
 ## License
 
