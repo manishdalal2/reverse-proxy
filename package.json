@@ -1,5 +1,5 @@
 {
-  "name": "layer4-reverse-proxy",
+  "name": "tcp-reverse-proxy",
   "version": "0.1.0",
   "description": "Configurable Layer 4 TCP reverse proxy with both CLI and programmatic APIs.",
   "main": "dist/app.js",
@@ -14,8 +14,12 @@
     "prepare": "npm run build"
   },
   "files": [
-    "dist"
+    "dist",
+    "Readme.md"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "reverse-proxy",
     "tcp",
@@ -30,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/devbymd/my-node-socket-app.git"
+    "url": "git+https://github.com/manishdalal2/reverse-proxy.git"
   },
   "author": "Manish Dalal",
   "license": "MIT"
