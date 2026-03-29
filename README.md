@@ -5,24 +5,23 @@ Configurable Layer 4 TCP reverse proxy for tunneling HTTPS/TCP traffic between c
 ## Table of Contents
 
 - [Installation](#installation)
-
 - [Usage](#usage)
 - [How Proxy Flow Works](#how-proxy-flow-works)
 - [License](#license)
 
 ## Installation
 
-1. Install from npm
+Install from npm:
 
-   ```bash
-  npm install tcp-reverse-proxy
-   ```
+```bash
+npm install tcp-reverse-proxy
+```
 
-2. Run with CLI
+Run with CLI:
 
-   ```bash
-  npx tcp-reverse-proxy --help
-   ```
+```bash
+npx tcp-reverse-proxy --help
+```
 
 
 ## Usage
