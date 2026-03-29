@@ -7,6 +7,8 @@ Configurable Layer 4 TCP reverse proxy for tunneling HTTPS/TCP traffic between c
 - [Installation](#installation)
 - [Usage](#usage)
 - [How Proxy Flow Works](#how-proxy-flow-works)
+- [Release Automation](#release-automation)
+- [Developer Guide](#developer-guide)
 - [License](#license)
 
 ## Installation
@@ -154,6 +156,37 @@ Forwarding connection to 192.168.131.170:5015
 ```
 
 If you start the proxy with `--response-delay 2000`, you will see `Data sent to client after 2000ms delay: ...` in logs.
+
+## Release Automation
+
+This repository uses `semantic-release` on pushes to `main`.
+
+Commit message standards (Conventional Commits):
+
+- `feat: ...` -> releases a new minor version
+- `fix: ...` -> releases a new patch version
+- `feat!: ...` or `BREAKING CHANGE:` -> releases a new major version
+- `chore: ...` -> CI build runs, npm release is skipped
+
+Skip GitHub Actions entirely by adding one of these tokens to your commit message:
+
+- `[skip ci]`
+- `[ci skip]`
+- `[no ci]`
+- `[skip actions]`
+- `[actions skip]`
+
+Examples:
+
+```text
+feat: add backend timeout support
+fix: handle client disconnect race
+chore: update docs [skip ci]
+```
+
+## Developer Guide
+
+Contributor workflow and release conventions are documented in [developer.md](developer.md).
 
 
 ## License
