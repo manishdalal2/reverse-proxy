@@ -1,6 +1,7 @@
 # tcp-reverse-proxy
 
 Configurable Layer 4 TCP reverse proxy for tunneling HTTPS/TCP traffic between clients and an upstream target. Ships as both a CLI (`tcp-reverse-proxy`) and a programmatic API so you can embed it into other tooling.
+# [![Socket Badge](https://badge.socket.dev/npm/package/tcp-reverse-proxy/1.0.0)](https://badge.socket.dev/npm/package/tcp-reverse-proxy/1.0.0)
 
 ## Table of Contents
 
